@@ -21,6 +21,26 @@
                                 v-model="form.titulo"
                             ></textarea>
 
+                        <label class="block font-medium text-sm text-gray-700">
+                            Categoría
+                        </label>
+
+                        <select
+                            name=""
+                            id=""
+                            class="form-input w-full rounded-md shadow-sm"
+                            v-model="form.categoria"
+                            required
+                        >
+                            <option
+                                value=""
+                                disabled selected hidden
+                            >Seleccionar</option>
+                            <option value="Alta">Alta</option>
+                            <option value="Media">Media</option>
+                            <option value="Baja">Baja</option>
+                        </select>
+
                             <label class="block font-medium text-sm text-gray-700">
                                 Contenido
                             </label>
@@ -50,7 +70,6 @@
 <script>
     import { defineComponent } from 'vue'
     import AppLayout from '@/Layouts/AppLayout.vue'
-
     export default defineComponent({
         components: {
             AppLayout,
@@ -62,7 +81,8 @@
             return {
                 form: {
                     titulo: this.nota.titulo,
-                    contenido: this.nota.contenido
+                    contenido: this.nota.contenido,
+                    categoria: this.nota.categoria
                 }
             }
         },
@@ -74,9 +94,7 @@
                 if(confirm('¿Esta seguro que desesa eliminar esta nota?')){
                     this.$inertia.delete(this.route('nota.destroy', this.nota.id))
                 }
-
             },
         }
-
     })
 </script>
